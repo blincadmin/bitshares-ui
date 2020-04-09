@@ -423,7 +423,6 @@ $meter-radius: 0 !default;
                 border-radius: $meter-radius;
             }
         }
-
         // Firefox
         background: $meter-background;
         &::-moz-meter-bar {

@@ -109,20 +109,17 @@ $block-grid-max-size: 6 !default;
     );
     justify-content: map-get($options, $align);
 }
-/*
-  Set the source order of a block. Items with lower numbers appear first. If multiple items have the same number, the one in the HTML first will appear first.
+/* Set the source order of a block. Items with lower numbers appear first. If multiple items have the same number, the one in the HTML first will appear first.
 
   @group grid
 
   @param {number} $order - Position in source order.
 
-  @output An order property.
-*/
+  @output An order property. */
 @mixin grid-order($order: 0) {
     order: $order;
 }
-/*
-  Collapse a content block by removing the padding.
+/* Collapse a content block by removing the padding.
 
   @group grid
 
@@ -134,22 +131,19 @@ $block-grid-max-size: 6 !default;
     - If true, add padding: 0;
     - If false, add padding: 1rem;
     - If null, add nothing, to cut down on CSS output
-    - Make null the default value
-*/
+    - Make null the default value */
 @mixin grid-collapse($collapse: true) {
     @if ($collapse) {
         padding: 0;
     }
 }
-/*
-  Constrain the size of a block to the size of the average grid row, and center-align it. This imitates the behavior of ordinary Foundation rows.
+/* Constrain the size of a block to the size of the average grid row, and center-align it. This imitates the behavior of ordinary Foundation rows.
 
   @group grid
 
   @param {bool} $container - Adds container styles if true.
 
-  @output A maximum width and the good old margin: 0 auto for center alignment.
-*/
+  @output A maximum width and the good old margin: 0 auto for center alignment. */
 @mixin grid-container($width: $container-width, $align: center) {
     $margins: (
         left: 0 auto 0 0,
@@ -159,43 +153,36 @@ $block-grid-max-size: 6 !default;
     max-width: $width;
     margin: map-get($margins, $align);
 }
-/*
-  Add negative margins to a block, equal to the padding of a content block. This aligns the edges of a block nested inside a content block.
+/* Add negative margins to a block, equal to the padding of a content block. This aligns the edges of a block nested inside a content block.
 
   @group grid
 
   @param {bool} $nest - Adds negative margins if true.
 
-  @output Negative margin values.
-*/
+  @output Negative margin values. */
 @mixin grid-nest($nest: true) {
     @if ($nest) {
         margin-left: -1rem;
         margin-right: -1rem;
     }
 }
-/*
-  Offset a block by adding a left margin.
+/* Offset a block by adding a left margin.
 
   @group grid
 
   @param {number | bool} $offset - If false, nothing is output. If a number, offsets the column by the specified number of columns.
 
-  @output A left margin based on the number of columns specified, and the global number of columns.
-*/
+  @output A left margin based on the number of columns specified, and the global number of columns. */
 @mixin grid-offset($offset: false) {
     @if ($offset != false) {
         margin-left: percentage($offset / $total-columns);
     }
 }
-
-/*
-  Resets styles set by panels. Use this when a panel transforms into a block on larger screens.
+/* Resets styles set by panels. Use this when a panel transforms into a block on larger screens.
 
   @group grid
 
-  @output Resets to transform, position, and a few visual styles.
-*/
+  @output Resets to transform, position, and a few visual styles. */
 @mixin grid-panel-reset() {
     transform: none;
     position: relative;
@@ -209,10 +196,7 @@ $block-grid-max-size: 6 !default;
     bottom: auto;
     left: auto;
 }
-
-/*
-  Frames are containers that stretch to the full dimmensions of the browser window.
-*/
+/* Frames are containers that stretch to the full dimmensions of the browser window. */
 @mixin grid-frame(
     $size: expand,
     $orientation: horizontal,
@@ -226,17 +210,13 @@ $block-grid-max-size: 6 !default;
     position: relative;
     overflow: hidden;
     backface-visibility: hidden;
-
     @include grid-size($size);
     @include grid-orient($orientation);
     @include grid-wrap($wrap);
     @include grid-align($align);
     @include grid-order($order);
 }
-
-/*
-  Groups are collections of content items. They're the "rows" of Foundation for Apps.
-*/
+/* Groups are collections of content items. They're the "rows" of Foundation for Apps. */
 @mixin grid-block(
     $size: expand,
     $orientation: horizontal,
@@ -245,46 +225,38 @@ $block-grid-max-size: 6 !default;
     $order: 0
 ) {
     @include grid-frame($size, $orientation, $wrap, $align, $order, auto);
-
     // Blocks will scroll by default if their content overflows
     @if ($orientation == vertical) {
         overflow-x: auto;
     } @else {
         overflow-y: auto;
     }
-
     // Add scrolling with inertia
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-
-/*
-  Blocks are containers for actual content. They're the "columns" of Foundation for Apps.
-*/
+/* Blocks are containers for actual content. They're the "columns" of Foundation for Apps. */
 @mixin grid-content($size: expand, $offset: null, $order: null) {
     // Content blocks are not flex items and have padding
     display: block;
     padding: 0 $block-padding;
-
     // Add scrolling with inertia
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-
     @include grid-size($size);
     @if $offset != null {
         @include grid-offset($offset);
     }
+
     @if $order != null {
         @include grid-order($order);
     }
 }
-
 @mixin grid-layout($up) {
     flex-flow: row wrap;
     overflow: visible;
     list-style-type: none;
-
     > li,
     > div,
     > section {
@@ -293,10 +265,8 @@ $block-grid-max-size: 6 !default;
         max-width: percentage(1 / $up);
     }
 }
-
 // CSS Output
 // - - - - - - - - - - - - - - - - - - - -
-
 // Shared styles for frames and blocks (parent elements)
 %block-core {
     // Change the direction children flow
@@ -313,7 +283,6 @@ $block-grid-max-size: 6 !default;
             }
         }
     }
-
     // Align the children of a grid block
     &.align-right {
         @include grid-align(right);
@@ -327,32 +296,28 @@ $block-grid-max-size: 6 !default;
     &.align-spaced {
         @include grid-align(spaced);
     }
-
     // Allow child elements to wrap
     &.wrap {
         @include grid-wrap(true);
     }
 }
-
 // Shared styles for blocks and content blocks (child elements)
 %child-core {
     // Shrink a flex item so it only takes up the space it needs
     &.shrink {
         @include grid-size(shrink);
     }
-
     // Prevent an element from scrolling
     &.noscroll {
         overflow: visible;
     }
 }
-
 @include exports(grid) {
     // The core grid elements:
-    //  - Frame
-    //  - Block
-    //  - Content block
-    //  - Container
+    // - Frame
+    // - Block
+    // - Content block
+    // - Container
     .grid-frame {
         @extend %block-core;
         @include grid-frame;
@@ -365,23 +330,17 @@ $block-grid-max-size: 6 !default;
     .grid-content {
         @extend %child-core;
         @include grid-content;
-
         &.collapse {
             padding: 0;
-        }
-
-        // Grids inside content blocks should wrap by default, so they mimic traditional float grids
+        } // Grids inside content blocks should wrap by default, so they mimic traditional float grids
         .grid-block {
             margin-left: -($block-padding);
             margin-right: -($block-padding);
             flex-wrap: wrap;
-            overflow: visible;
-
-            // Reverse the above wrapping behavior
+            overflow: visible; // Reverse the above wrapping behavior
             &.nowrap {
                 @include grid-wrap(false);
             }
-
             .grid-content {
                 overflow: visible;
             }
@@ -389,7 +348,6 @@ $block-grid-max-size: 6 !default;
     }
     .grid-container {
         @include grid-container;
-
         &.contain-left {
             @include grid-container($align: left);
         }
@@ -397,16 +355,13 @@ $block-grid-max-size: 6 !default;
             @include grid-container($align: right);
         }
     }
-
     // Breakpoint classes for blocks
     @each $size in $breakpoint-classes {
         .#{$size}-grid-block {
             @extend %block-core;
             @extend %child-core;
-
             @include breakpoint($size) {
                 @include grid-block;
-
                 // Override panel styles
                 &.panel {
                     @include grid-panel-reset;
@@ -415,18 +370,14 @@ $block-grid-max-size: 6 !default;
         }
         .#{$size}-grid-content {
             @extend %child-core;
-
             @include breakpoint($size) {
-                @include grid-content;
-
-                // Override panel styles
+                @include grid-content; // Override panel styles
                 &.panel {
                     @include grid-panel-reset;
                 }
             }
         }
     }
-
     // Sizing and ordering classes
     @for $i from 1 through $total-columns {
         // Source ordering
@@ -438,6 +389,7 @@ $block-grid-max-size: 6 !default;
         @for $i from 1 through $total-columns {
             @include breakpoint($size) {
                 // Block sizing
+
                 .#{$size}-#{$i} {
                     @include grid-size($i);
                 }
@@ -448,15 +400,13 @@ $block-grid-max-size: 6 !default;
                 // Offsets
                 .#{$size}-offset-#{$i} {
                     @include grid-offset($i);
-                }
-                // Parent sizing (block grids)
+                } // Parent sizing (block grids)
                 .#{$size}-up-#{$i} {
                     @include grid-layout($i);
                 }
             }
         }
     }
-
     .grid-content .modal .grid-block {
         flex-wrap: nowrap;
     }

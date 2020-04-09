@@ -104,8 +104,7 @@ $modal-overlay-background: rgba(#333, 0.7) !default;
         left: 0;
         z-index: $modal-zindex;
         display: none;
-        background-color: $modal-overlay-background;
-        // Horizontally and vertically center the modal
+        background-color: $modal-overlay-background; // Horizontally and vertically center the modal
         align-items: center;
         justify-content: center;
         // Prevent z-index issue in Mobile Safari

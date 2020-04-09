@@ -63,7 +63,8 @@ class WithdrawModal extends React.Component {
                         <Translate
                             component="span"
                             content="transfer.available"
-                        />:{" "}
+                        />
+                        :{" "}
                         <BalanceComponent
                             balance={account_balances[current_asset_id]}
                         />
@@ -79,9 +80,8 @@ class WithdrawModal extends React.Component {
                 <div className="grid-container">
                     <div className="content-block">
                         <h3>
-                            Withdraw {this.props.receive_asset_name}({
-                                this.props.receive_asset_symbol
-                            })
+                            Withdraw {this.props.receive_asset_name}(
+                            {this.props.receive_asset_symbol})
                         </h3>
                     </div>
                     <div className="content-block">

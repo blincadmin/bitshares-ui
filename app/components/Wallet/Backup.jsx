@@ -35,7 +35,7 @@ const connectObject = {
 class BackupCreate extends Component {
     render() {
         return (
-            <div style={{maxWidth: "40rem"}}>
+            <div className="something2" style={{maxWidth: "40rem"}}>
                 <Create
                     noText={this.props.noText}
                     newAccount={
@@ -97,7 +97,7 @@ class BackupRestore extends Component {
         );
 
         return (
-            <div>
+            <div className="restore_part">
                 <Translate
                     style={{textAlign: "left", maxWidth: "30rem"}}
                     component="p"

@@ -236,7 +236,8 @@ class GdexHistory extends React.Component {
                 <td className="column-hide-tiny" />
                 <td />
                 <td style={{textAlign: "center"}}>
-                    &nbsp;{this.state.nextPageEnabled ? (
+                    &nbsp;
+                    {this.state.nextPageEnabled ? (
                         <a onClick={this.getTransactionHistory.bind(this)}>
                             <Icon
                                 name="chevron-down"

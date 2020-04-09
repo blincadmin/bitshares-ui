@@ -104,19 +104,15 @@ $menubar-icon-spacing: $menubar-item-padding !default;
     @if ($autocolor) {
         $background-hover: smartscale($background, 7%);
         $background-active: $background-hover;
-
         $color: isitlight($background);
         $color-hover: $color;
         $color-active: $color;
     }
-
     // Container
     background: $background;
-
     // Items
     > li > a {
         color: $color;
-
         &:hover {
             background: $background-hover;
             color: $color-hover;
@@ -126,7 +122,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         background: $background-active;
         color: $color-active;
     }
-
     // Iconic
     @if using(iconic) {
         .iconic {
@@ -134,25 +129,20 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         }
     }
 }
-
 @mixin menu-bar-icons($position: left, $size: $menubar-icon-size) {
     > li {
         // Sizing
         > img,
         > .iconic {
             margin: 0;
-
             @if $menubar-icon-size != false {
                 width: $menubar-icon-size;
                 height: $menubar-icon-size;
-            }
-
-            // Remove any margins from standalone icons
+            } // Remove any margins from standalone icons
             &:first-child:last-child {
                 margin: 0;
             }
         }
-
         // Position
         @if $position == left {
             > a {
@@ -193,7 +183,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         }
     }
 }
-
 @mixin menu-bar-labels(
     $x: right,
     $y: center,
@@ -205,14 +194,12 @@ $menubar-icon-spacing: $menubar-item-padding !default;
 ) {
     > li {
         position: relative;
-
         > a {
             @if $x == left or $x == right {
                 padding-#{$x}: $size + $offset * 2;
             }
         }
     }
-
     #{$selector} {
         display: block;
         font-size: $size * 0.75;
@@ -225,11 +212,9 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         color: if($color == auto, isitlight($background), $color);
         position: absolute;
         pointer-events: none;
-
         @if $x == left or $x == right {
             #{$x}: $offset;
         }
-
         @if $y == top or $y == bottom {
             #{$y}: $offset;
         } @else {
@@ -238,9 +223,7 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         }
     }
 }
-
-/*
-  Set the alignment of menu items (li) within a menu-bar
+/* Set the alignment of menu items (li) within a menu-bar
 
   left: Items align to the left.
   right: Items align to the right.
@@ -252,8 +235,7 @@ $menubar-icon-spacing: $menubar-item-padding !default;
 
   @param {string} $align - Alignment to use.
 
-  @output An appropriate justify-content value.
-*/
+  @output An appropriate justify-content value. */
 @mixin menu-bar-align($align: left) {
     $options: (
         left: flex-start,
@@ -264,15 +246,11 @@ $menubar-icon-spacing: $menubar-item-padding !default;
     );
     justify-content: map-get($options, $align);
 }
-
-/*
-  CSS output
-*/
+/* CSS output */
 @include exports(menu-bar) {
     .menu-bar {
         @extend %menu-bar;
         @include menu-bar-style;
-
         // Positioning
         &,
         &.horizontal {
@@ -280,15 +258,12 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         }
         &.vertical {
             @include menu-bar-layout(vertical);
-        }
-
-        // Condensed bar
+        } // Condensed bar
         &.condense {
             > li {
                 flex: 0 0 auto;
             }
         }
-
         // Align Menu Items
         &.align-right {
             @include menu-bar-align(right);
@@ -314,9 +289,7 @@ $menubar-icon-spacing: $menubar-item-padding !default;
                     li {
                         flex: 1 0 auto;
                     }
-                }
-
-                // Responsive Alignment
+                } // Responsive Alignment
                 &.#{$size}-align-left {
                     @include menu-bar-align(left);
                 }
@@ -329,12 +302,12 @@ $menubar-icon-spacing: $menubar-item-padding !default;
                 &.#{$size}-align-justify {
                     @include menu-bar-align(justify);
                 }
+
                 &.#{$size}-align-spaced {
                     @include menu-bar-align(spaced);
                 }
             }
         }
-
         // Responsive positioning
         @each $size in $breakpoint-classes {
             @include breakpoint($size) {
@@ -346,7 +319,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
                 }
             }
         }
-
         // Icon positioning
         &,
         &.icon-top {
@@ -370,7 +342,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
                 }
             }
         }
-
         // Labels
         &.label-side {
             @include menu-bar-labels(right, center);
@@ -378,7 +349,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         &.label-corner {
             @include menu-bar-labels(right, top);
         }
-
         // Coloring
         &.primary {
             @include menu-bar-style($primary-color, $autocolor: true);
@@ -386,7 +356,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
         &.dark {
             @include menu-bar-style($dark-color, $autocolor: true);
         }
-
         // Title
         > li.title {
             padding: $menubar-item-padding;
@@ -394,27 +363,22 @@ $menubar-icon-spacing: $menubar-item-padding !default;
             font-weight: bold;
         }
     }
-
     // Menu groups
     .menu-group {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-
         @include breakpoint(medium) {
             flex-wrap: nowrap;
         }
-
         > .menu-group-left,
         > .menu-group-right {
             flex: 1 1 100%;
-
             @include breakpoint(medium) {
                 flex: 0 0 auto;
             }
         }
-
         // Menu bar is condensed
         .menu-bar {
             > li {
@@ -422,7 +386,6 @@ $menubar-icon-spacing: $menubar-item-padding !default;
             }
             margin: 0;
         }
-
         // Coloring class cascades down to the menu bar
         &.primary {
             background-color: $primary-color;

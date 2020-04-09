@@ -167,7 +167,8 @@ $child-selectors: "> a, > label, > button";
         }
         &.alert {
             @include button-group-style(false, $alert-color);
-        } // Individual colors
+        }
+        // Individual colors
         > li {
             &.secondary {
                 #{$child-selectors} {

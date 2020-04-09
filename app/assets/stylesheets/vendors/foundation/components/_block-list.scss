@@ -27,31 +27,24 @@ $blocklist-item-background-hover: smartscale(
 ) !default;
 $blocklist-item-color-disabled: #999 !default;
 $blocklist-item-border: 1px solid smartscale($blocklist-background, 18.5%) !default;
-
 $blocklist-item-label-color: scale-color(
     $blocklist-item-color,
     $lightness: 60%
 ) !default;
 $blocklist-item-icon-size: 0.8 !default;
-
 $blocklist-header-fontsize: 0.8em !default;
 $blocklist-header-color: smartscale($blocklist-item-color, 40%) !default;
 $blocklist-header-uppercase: true;
-
 $blocklist-check-icons: true !default;
-///
-
-/*
-  Adds styles for a block list container.
+// /
+/* Adds styles for a block list container.
 
   $font-size: global font size for the list.
-  $full-bleed: when "true", the margins of the list invert to line it up with the edge of a padded element.
-*/
+  $full-bleed: when "true", the margins of the list invert to line it up with the edge of a padded element. */
 %block-list-container {
     margin-bottom: 1rem;
     line-height: 1;
     user-select: none;
-
     &,
     ul {
         list-style-type: none;
@@ -116,8 +109,7 @@ $blocklist-check-icons: true !default;
         &:first-child {
             border-top: $border;
         }
-    }
-    // Inner elements share the same basic styles
+    } // Inner elements share the same basic styles
     > a,
     > span,
     > label {
@@ -202,8 +194,7 @@ $blocklist-check-icons: true !default;
         font-weight: bold;
         color: $color;
         font-size: 2em;
-    }
-    // Labels next to links move over to make room for the chevron
+    } // Labels next to links move over to make room for the chevron
     // TODO: this selector needs to be customiable, but adding a setting just for it might be weird
     .#{$label-class} {
         padding-right: get-side($padding, right) * 1.5;
@@ -312,7 +303,6 @@ $blocklist-check-icons: true !default;
         select {
             // Reset pesky <select> styles
             -webkit-appearance: none;
-
             -moz-appearance: none;
             outline: 0;
             background: 0;

@@ -113,7 +113,6 @@ $titlebar-item-classes: (
     @extend %title-bar;
     @include title-bar-style($background, $color, $border, $padding);
 }
-
 @include exports(title-bar) {
     .title-bar {
         @include title-bar;

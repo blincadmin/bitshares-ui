@@ -86,7 +86,6 @@ $foundation-colors: (
     *:after {
         box-sizing: inherit;
     }
-
     // Default body styles
     body {
         background: $body-background;
@@ -98,24 +97,19 @@ $foundation-colors: (
         font-style: $body-font-style;
         line-height: 1;
         position: relative;
-
         @if $body-antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
     }
-
     img {
         // Grid Defaults to get images and embeds to work properly
         max-width: 100%;
         height: auto;
-        -ms-interpolation-mode: bicubic;
-
-        // Get rid of gap under images by making them display: inline-block; by default
+        -ms-interpolation-mode: bicubic; // Get rid of gap under images by making them display: inline-block; by default
         display: inline-block;
         vertical-align: middle;
     }
-
     // Give all anchors and interactive directives the hover cusor
     a,
     [ui-sref],
@@ -124,7 +118,6 @@ $foundation-colors: (
     [zf-toggle] {
         cursor: pointer;
     }
-
     #map_canvas,
     .map_canvas {
         img,
@@ -133,7 +126,6 @@ $foundation-colors: (
             max-width: none !important;
         }
     }
-
     .padding {
         padding: $global-padding;
     }

@@ -36,7 +36,6 @@ $button-tag-selector: false !default;
     border-radius: $button-radius;
     // Dropdown arrow
     // TODO: Change to class and mixin because now the toggle is 'fa-open' which is too generic
-
     // &[data-popup-toggle] {
     // position: relative;
     // padding-right: 2em; // Placeholder

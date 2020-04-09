@@ -21,7 +21,11 @@ class ResolvemyActiveAccountsChainState extends Component {
         let child = Children.only(this.props.children);
         if (!child)
             return (
-                <span>{myActiveAccounts.map(a => <br>{a.toJS()}</br>)}</span>
+                <span>
+                    {myActiveAccounts.map(a => (
+                        <br>{a.toJS()}</br>
+                    ))}
+                </span>
             );
         // Pass the list to a child reactjs component as this.props.resolvedmyActiveAccounts
         child = React.cloneElement(child, {myActiveAccounts});
@@ -43,13 +47,16 @@ class ResolvemyActiveAccounts extends Component {
     }
 }
 
-ResolvemyActiveAccounts = connect(ResolvemyActiveAccounts, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return AccountStore.getState();
+ResolvemyActiveAccounts = connect(
+    ResolvemyActiveAccounts,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return AccountStore.getState();
+        }
     }
-});
+);
 
 export default ResolvemyActiveAccounts;
