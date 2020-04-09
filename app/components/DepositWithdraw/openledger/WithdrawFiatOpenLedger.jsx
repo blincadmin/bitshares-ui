@@ -92,7 +92,8 @@ class WithdrawFiatOpenLedger extends React.Component {
                         <Translate
                             component="span"
                             content="transfer.available"
-                        />:{" "}
+                        />
+                        :{" "}
                         <BalanceComponent
                             balance={account_balances[current_asset_id]}
                         />

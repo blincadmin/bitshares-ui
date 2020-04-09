@@ -120,7 +120,6 @@ $notification-icon-align: top !default;
     @extend %notification;
     @include notification-style($background, $color, $padding, $radius);
 }
-
 @mixin notification-container(
     $x: nth($notification-default-position, 1),
     $y: nth($notification-default-position, 2),
@@ -193,11 +192,9 @@ $notification-icon-align: top !default;
         &.warning {
             @include notification-style($warning-color);
         }
-
         &.alert {
             @include notification-style($alert-color);
         }
-
         &.dark {
             @include notification-style($dark-color, #fff);
         }

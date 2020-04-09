@@ -34,7 +34,8 @@ class AccountBalance extends React.Component {
         else
             return (
                 <span>
-                    0&nbsp;<AssetName
+                    0&nbsp;
+                    <AssetName
                         name={this.props.asset.get("symbol")}
                         replace={this.props.replace}
                     />

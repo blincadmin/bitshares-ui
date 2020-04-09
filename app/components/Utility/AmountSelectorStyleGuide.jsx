@@ -16,7 +16,6 @@ class AmountSelector extends DecimalChecker {
         onChange: PropTypes.func,
         tabIndex: PropTypes.number,
         error: PropTypes.string,
-        scroll_length: PropTypes.number,
         selectDisabled: PropTypes.bool
     };
 
@@ -31,7 +30,7 @@ class AmountSelector extends DecimalChecker {
     }
 
     formatAmount(v) {
-        /*// TODO: use asset's precision to format the number*/
+        // TODO: use asset's precision to format the number
         if (!v && typeof v !== "number") v = "";
         if (typeof v === "number") v = v.toString();
         let value = v.trim().replace(/,/g, "");
@@ -103,6 +102,7 @@ class AmountSelector extends DecimalChecker {
                 onChange={this.onAssetChange.bind(this)}
                 disabled={this.props.selectDisabled ? true : undefined}
                 tabIndex={this.props.tabIndex + 1}
+                onSearch={this.props.onSearch}
             />
         );
 
@@ -114,18 +114,23 @@ class AmountSelector extends DecimalChecker {
                 validateStatus={this.props.validateStatus}
                 help={this.props.help}
             >
-                <Input
-                    disabled={this.props.disabled}
-                    value={value || ""}
-                    placeholder={this.props.placeholder}
-                    onChange={this._onChange.bind(this)}
-                    tabIndex={this.props.tabIndex}
-                    onPaste={this.props.onPaste || this.onPaste.bind(this)}
-                    onKeyPress={this.onKeyPress.bind(this)}
-                    addonAfter={addonAfter}
-                    addonBefore={addonBefore}
-                    className="input-group-unbordered-before"
-                />
+                <Input.Group compact>
+                    <Input
+                        disabled={this.props.disabled}
+                        value={value || ""}
+                        style={{
+                            width: "calc(100% - 130px)"
+                        }}
+                        placeholder={this.props.placeholder}
+                        onChange={this._onChange.bind(this)}
+                        tabIndex={this.props.tabIndex}
+                        onPaste={this.props.onPaste || this.onPaste.bind(this)}
+                        onKeyPress={this.onKeyPress.bind(this)}
+                        addonBefore={addonBefore}
+                        className="input-group-unbordered-before"
+                    />
+                    {addonAfter}
+                </Input.Group>
             </Form.Item>
         );
     }

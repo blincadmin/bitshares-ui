@@ -13,9 +13,10 @@ import IntlActions from "actions/IntlActions";
 import CreateAccount from "./Account/CreateAccount";
 import CreateAccountPassword from "./Account/CreateAccountPassword";
 import {Route} from "react-router-dom";
-import {getWalletName, getLogo} from "branding";
+import {getWalletName, getLogo, getAllowedLogins} from "branding";
 import {Select, Row, Col, Icon} from "bitshares-ui-style-guide";
 var logo = getLogo();
+var createlogo = require("./createlogo.png");
 
 const FlagImage = ({flag, width = 50, height = 50}) => {
     return (
@@ -97,7 +98,7 @@ class LoginSelector extends React.Component {
                 filterOption={this.languagesFilter}
                 value={this.state.currentLocale}
                 onChange={this.handleLanguageSelect}
-                style={{width: "123px", marginBottom: "16px"}}
+                style={{width: "340px", marginBottom: "16px"}}
             >
                 {this.state.locales.map(locale => (
                     <Select.Option
@@ -115,29 +116,17 @@ class LoginSelector extends React.Component {
                 <div className="grid-block shrink vertical">
                     <div className="grid-content shrink text-center account-creation">
                         <div>
-                            <img src={logo} />
+                            <img className="createlogo" src={createlogo} />
                         </div>
 
                         <div>
-                            <Translate
-                                content="header.create_account"
-                                component="h4"
-                            />
-                        </div>
+                            <h1 className="titles"> Welcome To</h1>
+                            <h1 className="titles">
+                                {" "}
+                                BLINC Decentralize Exchange
+                            </h1>
 
-                        <div>
-                            <Translate
-                                content="account.intro_text_title"
-                                component="h4"
-                                wallet_name={getWalletName()}
-                            />
-                            <Translate
-                                unsafe
-                                content="account.intro_text_1"
-                                component="p"
-                            />
-
-                            <div className="shrink text-center">
+                            <div className="shrink text-center language_container">
                                 <div className="grp-menu-item overflow-visible account-drop-down">
                                     <div
                                         className="grp-menu-item overflow-visible login-selector--language-select"
@@ -184,7 +173,7 @@ class LoginSelector extends React.Component {
                                     );
                                 }}
                             >
-                                <Translate content="header.unlock_short" />
+                                <span className="logininstead"> Login</span>
                             </span>
                         </div>
 

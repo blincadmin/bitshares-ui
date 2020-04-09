@@ -69,7 +69,6 @@ $offcanvas-frame-selector: ".grid-frame" !default;
         $shadow-color: get-shadow-value($shadow, color);
     }
     /* Sizing */
-
     @if $position == left or $position == right {
         @if $size == default {
             $size: $offcanvas-size-horizontal;
@@ -84,7 +83,6 @@ $offcanvas-frame-selector: ".grid-frame" !default;
         width: 100%;
     }
     /* Positioning */
-
     @if $position == left {
         top: 0;
         left: 0;
@@ -157,7 +155,6 @@ $offcanvas-frame-selector: ".grid-frame" !default;
         @extend %off-canvas;
         @include off-canvas-layout;
         @include off-canvas-style;
-
         &.top {
             @include off-canvas-layout(top);
         }

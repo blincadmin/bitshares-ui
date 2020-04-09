@@ -25,7 +25,7 @@ import utils from "common/utils";
 import BuySell from "./BuySell";
 import ScaledOrderTab from "./ScaledOrderTab";
 import ExchangeHeader from "./ExchangeHeader";
-import {MyOpenOrders} from "./MyOpenOrders";
+import {MarketOrders} from "./MyOpenOrders";
 import {OrderBook} from "./OrderBook";
 import MarketHistory from "./MarketHistory";
 import MyMarkets from "./MyMarkets";
@@ -2535,13 +2535,17 @@ class Exchange extends React.Component {
                 />
             );
 
-        // if (this.refs.order_book) {
-        // Doesn't scale backwards
-        // panelWidth = this.refs.order_book.refs.vertical_sticky_table.scrollData.scrollWidth;
-        // panelWidth = 350;
-        // }
-
         panelWidth = 350;
+
+        if (
+            this.refs.order_book &&
+            this.refs.order_book.verticalStickyTable &&
+            this.refs.order_book.verticalStickyTable.current &&
+            this.refs.order_book.verticalStickyTable.current.scrollData
+        ) {
+            panelWidth = this.refs.order_book.verticalStickyTable.current
+                .scrollData.scrollWidth;
+        }
 
         let marketHistory =
             tinyScreen &&
@@ -2613,7 +2617,7 @@ class Exchange extends React.Component {
         let myOpenOrders =
             tinyScreen &&
             !this.state.mobileKey.includes("myOpenOrders") ? null : (
-                <MyOpenOrders
+                <MarketOrders
                     key={`actionCard_${actionCardIndex++}`}
                     style={{marginBottom: !tinyScreen ? 15 : 0}}
                     className={cnames(
@@ -2652,7 +2656,7 @@ class Exchange extends React.Component {
             marketSettleOrders.size === 0 ||
             (tinyScreen &&
                 !this.state.mobileKey.includes("settlementOrders")) ? null : (
-                <MyOpenOrders
+                <MarketOrders
                     key={`actionCard_${actionCardIndex++}`}
                     style={{marginBottom: !tinyScreen ? 15 : 0}}
                     className={cnames(
@@ -3032,7 +3036,9 @@ class Exchange extends React.Component {
                         "small-12 order-5",
                         verticalOrderBook ? "xlarge-order-5" : "",
                         !verticalOrderBook && !verticalOrderForm
-                            ? "xlarge-order-2"
+                            ? centerContainerWidth < 1200
+                                ? "xlarge-order-5"
+                                : "xlarge-order-2"
                             : ""
                     )}
                     style={{paddingRight: 5}}
@@ -3567,13 +3573,9 @@ class Exchange extends React.Component {
                         ref="deposit_modal"
                         action="deposit"
                         fiatModal={false}
-                        account={currentAccount.get("name")}
-                        sender={currentAccount.get("id")}
-                        asset={
-                            depositModalType === "bid"
-                                ? base.get("id")
-                                : quote.get("id")
-                        }
+                        account={currentAccount}
+                        sender={currentAccount}
+                        asset={depositModalType === "bid" ? base : quote}
                         modalId={
                             "simple_deposit_modal" +
                             (depositModalType === "bid" ? "" : "_ask")

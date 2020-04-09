@@ -182,7 +182,6 @@ $motion-delay-long: 700ms !default;
 ) {
     @include transition-start($dir) {
         @include transition-basics($duration, $timing, $delay);
-
         transition-property: opacity;
         opacity: $from;
     }
@@ -215,7 +214,8 @@ $motion-delay-long: 700ms !default;
         right: rotateY($rotationAmount),
         bottom: rotateX($rotationAmount * -1),
         left: rotateY($rotationAmount * -1)
-    ); // Rotation origin
+    );
+    // Rotation origin
     $rotation: "";
     @if $turn-origin == from-front {
         $rotation: map-get($rotationsFrom, $from);
@@ -373,7 +373,6 @@ $motion-delay-long: 700ms !default;
     60% {
         transform: rotate(7deg);
     }
-
     35%,
     45%,
     55%,
@@ -423,6 +422,7 @@ $motion-delay-long: 700ms !default;
     .slideInDown {
         @include slide($from: top);
     }
+
     .slideInLeft {
         @include slide($from: right);
     }
@@ -502,7 +502,8 @@ $motion-delay-long: 700ms !default;
     .spinOutCCW {
         @include spin(out, 0.75turn, true);
     }
-    /* Transition modifiers */ // Duration
+    /* Transition modifiers */
+    // Duration
     .slow {
         transition-duration: $motion-duration-slow !important;
     }
@@ -561,7 +562,8 @@ $motion-delay-long: 700ms !default;
         }
         &.fast {
             animation-duration: $motion-duration-fast !important;
-        } // Delay
+        }
+        // Delay
         &.delay {
             animation-delay: $motion-delay-short !important;
         }

@@ -1,9 +1,7 @@
-<svg width="32" height="32" version="1.1" viewBox="0 0 8.466666 8.4666669" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(15.497 -160.79)">
-        <g transform="matrix(1 0 0 1.0946 0 -15.614)" style="">
-            <rect x="-15.497" y="161.16" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-            <rect x="-15.497" y="167.37" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-            <rect x="-15.497" y="164.26" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="28.56" height="17.89" viewBox="0 0 28.56 17.89">
+  <g id="Menu" transform="translate(-9.72 -14)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="21.56" height="2" transform="translate(16.72 14)" fill="#171717"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="14.56" height="2" transform="translate(23.72 21.95)" fill="#171717"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="28.56" height="2" transform="translate(9.72 29.89)" fill="#171717"/>
+  </g>
 </svg>

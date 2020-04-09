@@ -227,10 +227,9 @@ $rem-base: 16px !default;
 // / Get Shadow Value
 // / Given shadow value $val, find a specific element of the shadow, which is $elem. The possible values for $elem are x, y, size, spread, color, and inset.
 // /
-
 // / @param {list} $val - Shadow value to find a value in.
 // / @param {keyword} $elem - Shadow component to extract.
-///
+//
 // / @return If the value exists, returns the value. If the value is not set, returns false. If `$elem` is "inset", returns true, otherwise false.
 @function get-shadow-value($val, $elem) {
     // Return "none" if there's no shadow
@@ -287,7 +286,7 @@ $rem-base: 16px !default;
 // / Removes the unit (e.g. px, em, rem) from a value, returning the number only.
 // /
 // / @param {number} $num - Number to strip unit from.
-///
+//
 // / @return The same number, sans unit.
 @function strip-unit($num) {
     @return $num / ($num * 0 + 1);
@@ -296,7 +295,7 @@ $rem-base: 16px !default;
 // / Converts a turn unit to the equivalent unit in degrees. 1turn is equal to 360 degrees. Not all browsers support turn, so this function allows us to use turns while outputting a value that all browsers understand.
 // /
 // / @param {number} $value - Turn value to convert.
-///
+//
 // / @return The same value, but in degrees.
 @function turn-to-deg($value) {
     @return strip-unit($value) * 360deg;
@@ -305,7 +304,7 @@ $rem-base: 16px !default;
 // / Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$rem-base` variable.
 // /
 // / @param {number} $value - Pixel value to convert.
-///
+//
 // / @return A number in rems, calculated based on the given value and the base pixel value.
 @function convert-to-rem($value, $base-value: $rem-base) {
     $value: strip-unit($value) / strip-unit($base-value) * 1rem;
@@ -318,7 +317,7 @@ $rem-base: 16px !default;
 // / Converts one or more pixel values into matching rem values. This function works a lot like `convert-to-rem`, except it can convert more than one value at once, which is useful when setting multiple values on a `margin` or `padding` property.
 // /
 // / @param {number|list} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
-///
+//
 // / @return A list of converted values.
 @function rem-calc($values, $base-value: null) {
     @if $base-value == null {
